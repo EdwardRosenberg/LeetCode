@@ -7,14 +7,8 @@ import java.util.Stack;
 public class ReversePolishNotation {
 
     public int evalRPN(String[] tokens) {
-
         Stack<Integer> stack = new Stack<>();
-        List<String> operators = new ArrayList<>(4);
-
-        operators.add("+");
-        operators.add("-");
-        operators.add("*");
-        operators.add("/");
+        List<String> operators = initOperators();
 
         for (String token : tokens) {
             if (operators.contains(token)) {
@@ -41,6 +35,16 @@ public class ReversePolishNotation {
         }
 
         return stack.peek();
+    }
+
+    private List<String> initOperators() {
+        List<String> operators = new ArrayList<>(4);
+
+        operators.add("+");
+        operators.add("-");
+        operators.add("*");
+        operators.add("/");
+        return operators;
     }
 
 }
