@@ -19,7 +19,7 @@ public class BinarySearchRecursion {
             return;
         }
 
-        int middle = left + (right - left) / 2;
+        int middle = (left + right) / 2;
 
         if (nums[middle] < target) {
             search(nums, middle, right, target);
