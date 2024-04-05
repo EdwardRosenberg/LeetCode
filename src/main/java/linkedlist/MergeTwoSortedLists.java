@@ -3,34 +3,43 @@ package linkedlist;
 public class MergeTwoSortedLists {
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-
+        // Check if either list is null
         if (list1 == null) return list2;
         if (list2 == null) return list1;
 
+        // Initialize variables
+        // Determine the head of the merged list based on which list has the smaller value
         ListNode head = (list1.val <= list2.val) ? list1 : list2;
-        ListNode list1current = list1;
-        ListNode list1next = list1.next;
-        ListNode list2current = list2;
-        ListNode list2next = list2.next;
+        // Initialize a current pointer to keep track of the current node in the merged list
+        ListNode current = head;
+        // Initialize next pointers for both lists to iterate through them
+        ListNode next1 = (head == list1) ? list1.next : list1;
+        ListNode next2 = (head == list2) ? list2.next : list2;
 
-        while (list2current != null) {
-            if (list1current.val <= list2current.val && ((list1current.next != null && list1current.next.val >= list2current.val) || list1current.next == null)) {
-                list1next = list1current.next;
-                list1current.next = list2current;
-                list2current = list2current.next;
-                list1current.next.next = list1next;
-            } else if (list1current.next != null && list1current.next.val < list2current.val) {
-                list1current = list1current.next;
+        // Merge the lists
+        while (next1 != null && next2 != null) {
+            // Compare the values of the next nodes in both lists
+            if (next1.val <= next2.val) {
+                // If the value in list1 is smaller or equal, append list1's node to the merged list
+                current.next = next1;
+                // Move to the next node in list1
+                next1 = next1.next;
             } else {
-                list2next = list2current.next;
-                list1next = list1current;
-                list1current = list2current;
-                list1current.next = list1next;
-                list2current = list2next;
+                // If the value in list2 is smaller, append list2's node to the merged list
+                current.next = next2;
+                // Move to the next node in list2
+                next2 = next2.next;
             }
+            // Move the current pointer to the newly appended node in the merged list
+            current = current.next;
         }
 
+        // Append remaining nodes if any (either from list1 or list2)
+        current.next = (next1 != null) ? next1 : next2;
+
+        // Return the head of the merged list
         return head;
     }
+
 
 }
