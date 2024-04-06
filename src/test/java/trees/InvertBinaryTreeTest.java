@@ -33,11 +33,11 @@ class InvertBinaryTreeTest {
         //       / \
         //      5   4
         // Check if the tree is inverted properly
-        assertEquals(1, invertedTree.val);
-        assertEquals(3, invertedTree.left.val);
-        assertEquals(2, invertedTree.right.val);
-        assertEquals(5, invertedTree.right.left.val);
-        assertEquals(4, invertedTree.right.right.val);
+        assertEquals(1, invertedTree.value);
+        assertEquals(3, invertedTree.left.value);
+        assertEquals(2, invertedTree.right.value);
+        assertEquals(5, invertedTree.right.left.value);
+        assertEquals(4, invertedTree.right.right.value);
     }
 
     @Test

@@ -1,18 +1,28 @@
+
+
 public class RemoveDuplicatesFromArray {
 
     public int removeDuplicates(int[] nums) {
-        int offset = 0;
-        int sortedNumSize = 0;
+        // Initialize countDuplicates to keep track of the number of duplicates encountered
+        int countDuplicates = 0;
+        // Initialize uniqueElementsCount to keep track of the count of unique elements in the array
+        int uniqueElementsCount = 0;
 
+        // Iterate through the array
         for (int i = 0; i < nums.length; i++) {
+            // If current element is a duplicate (not the first occurrence), increment countDuplicates
             if (i > 0 && nums[i] == nums[i - 1]) {
-                offset++;
+                countDuplicates++;
             } else {
-                nums[i - offset] = nums[i];
-                sortedNumSize++;
+                // If current element is not a duplicate
+                // Move the current element to its correct position considering the count of duplicates
+                nums[i - countDuplicates] = nums[i];
+                // Increment uniqueElementsCount to keep track of the count of unique elements
+                uniqueElementsCount++;
             }
         }
 
-        return sortedNumSize;
+        // Return the count of unique elements in the array
+        return uniqueElementsCount;
     }
 }
