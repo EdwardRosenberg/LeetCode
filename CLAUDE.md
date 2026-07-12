@@ -67,7 +67,8 @@ Every solution gets a `<ProblemName>.md` file next to its `.java` file, in the s
 
 1. The same header info as the `.java` doc comment — title, LeetCode link, difficulty, pattern, cue, approach, complexity — as prose/bullets, not a code comment.
 2. **An ASCII diagram walking through the mechanic**, when the pattern involves something spatial that's faster to grok visually than in prose — pointer/window movement, stack pushes/pops, tree/list traversal, etc. Trace a short concrete example (not the whole input), show the key transition (e.g. the collision that triggers a shrink), and reuse the code's own variable names in the diagram so the two reinforce each other. Skip it for patterns where a diagram wouldn't add anything over the prose approach (e.g. a plain hash lookup).
-3. The full solution code embedded below it in a fenced ```java block, kept in sync with the `.java` file.
+3. **`Watch out:` section (optional)** — a one-line note on the failure mode from your timed attempt: "forgot to shrink before adding" or "off-by-one on the window boundary." This is the most valuable months later, because it's *your* blind spot, not generic knowledge. Only include if there's an actual gotcha; skip it for the straightforward cases.
+4. The full solution code embedded below it in a fenced ```java block, kept in sync with the `.java` file.
 
 This makes the solution readable on GitHub without opening the IDE, and is the link target from the pattern index.
 
@@ -86,11 +87,13 @@ Same low-cognitive-load bar as the solution files: a tired reviewer should be ab
 
 Each pattern package has its own `README.md` (e.g. `src/main/java/slidingwindow/README.md`) holding one table of that pattern's problems, in course order. Row format:
 
-| Problem | Difficulty | Cue | Solution |
-|---------|-----------|-----|----------|
-| [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | complement lookup → HashMap value→index | [TwoSum.md](TwoSum.md) |
+| Problem | Difficulty | Cue | Solution | Last Solved |
+|---------|-----------|-----|----------|-------------|
+| [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | complement lookup → HashMap value→index | [TwoSum.md](TwoSum.md) | 2026-07-11 |
 
 The Solution column links to the `.md` doc page (relative path, same folder), not directly to the `.java` file.
+
+**Last Solved** is the date you added/updated that solution (YYYY-MM-DD). Use it to spot problems you haven't touched in 4+ weeks — those are your spaced-repetition candidates.
 
 ## Root README index
 
@@ -98,9 +101,27 @@ The root `README.md` lists every pattern package with a one-line description of 
 
 When adding a solution: add its row to the pattern's index. If it's a brand-new pattern package, add a line for it to the root README too. Keep cues to one line — the indexes are for pre-interview skimming.
 
+## Cue drill (CUES.md)
+
+`CUES.md` is a self-test tool: it lists every cue with the problem hidden in a `<details>` fold, so you can practice pattern recognition in a 5–10-minute sprint. Read the cue, guess the pattern, click to check.
+
+When you add a new solution to a pattern index, also add its cue to the corresponding section of `CUES.md` in the same `<details>` format. The drill stays in sync with the problem count, not with every edit to the solutions themselves.
+
 ## Weekend redo support
 
 On request `redo check: <problem name>`: run only that problem's test class against the owner's fresh attempt (he'll have replaced or added the method), report pass/fail with failing cases, and **do not fix his code** — the redo is practice, failures are the signal.
+
+## Variant policy
+
+The repo contains multiple solutions to the same problem (e.g., `LongestConsecutiveSequence` with four variants; `TopKFrequentElements` + `TopKFrequentElements2`). These predate the curation format.
+
+**Indexing strategy:** When you add a problem to a pattern index, link **only the best reference version** — the one you'd pick first under time pressure, or the one that teaches the pattern cleanest. Add a one-line note in that solution's `.md` header listing the other variants on disk:
+
+```
+Variants: [LongestConsecutiveSequenceRecursion](LongestConsecutiveSequenceRecursion.java) (recursive), [LongestConsecutiveSequenceSorted](LongestConsecutiveSequenceSorted.java) (sorted approach)
+```
+
+This keeps the skim surface small (the pattern index stays scannable) while preserving the history on disk for deep dives.
 
 ## Guardrails
 

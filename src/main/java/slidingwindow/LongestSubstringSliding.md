@@ -11,6 +11,8 @@ Expand the right pointer; on a duplicate, shrink from the left until the window 
 - **Time:** O(n) — each element enters and leaves the window at most once.
 - **Space:** O(min(n, alphabet))
 
+**Watch out:** Easy to shrink *after* adding the new char instead of *before* — that lets duplicates into the window. The order is: check for duplicate → shrink → add.
+
 ## Visualizing it
 
 ```
