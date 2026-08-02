@@ -4,7 +4,7 @@
 - **Pattern:** Arrays & Hashing
 - **Cue:** "two strings/values use the exact same characters/elements the same number of times"
 
-Variants: [IsAnagramSorted](IsAnagramSorted.md) (sorts both words and compares — simpler to write, O(n log n) instead of O(n))
+Variants: [IsAnagramSorted](IsAnagramSorted.md) (sorts both words and compares — simpler to write, O(n log n) instead of O(n)), [IsAnagramCounting](IsAnagramCounting.md) (same canonical-signature idea as Group Anagrams, but O(1) space via a flat array instead of a HashMap)
 
 ## Approach
 

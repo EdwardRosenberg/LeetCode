@@ -8,10 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IsAnagramTest {
 
-    // Both implementations must agree on every scenario — looping over them
-    // here keeps IsAnagram (HashMap counting) and IsAnagramSorted in sync
-    // without duplicating the whole test file per variant.
-    private final List<AnagramChecker> implementations = List.of(new IsAnagram(), new IsAnagramSorted());
+    // All implementations must agree on every scenario — looping over them
+    // here keeps IsAnagram (HashMap counting), IsAnagramSorted, and
+    // IsAnagramCounting in sync without duplicating the whole test file per
+    // variant.
+    private final List<AnagramChecker> implementations =
+            List.of(new IsAnagram(), new IsAnagramSorted(), new IsAnagramCounting());
 
     @Test
     void exampleOne() {
