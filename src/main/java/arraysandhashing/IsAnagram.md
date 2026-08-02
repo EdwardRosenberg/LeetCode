@@ -1,25 +1,28 @@
+# Valid Anagram
+
+- **LeetCode:** [242 — Valid Anagram](https://leetcode.com/problems/valid-anagram/) (Easy)
+- **Pattern:** Arrays & Hashing
+- **Cue:** "two strings/values use the exact same characters/elements the same number of times"
+
+Variants: [IsAnagramSorted](IsAnagramSorted.md) (sorts both words and compares — simpler to write, O(n log n) instead of O(n))
+
+## Approach
+
+Count letters of the first word into a HashMap, then walk the second word decrementing counts. Any missing key or leftover count means the letter frequencies don't match.
+
+- **Time:** O(n) — one pass to build counts, one pass to consume them.
+- **Space:** O(1) — at most 26 lowercase letters in the map.
+
+**Watch out:** Comparing the *set* of letters isn't enough — `"aacc"` and `"abcc"` share the same letters but different counts. Track counts, not just presence.
+
+## Code
+
+```java
 package arraysandhashing;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * LeetCode 242 — Valid Anagram (Easy)
- * https://leetcode.com/problems/valid-anagram/
- *
- * Pattern: Arrays & Hashing
- * Cue: "two strings/values use the exact same characters/elements the same number of times"
- *
- * Approach: Count letters of the first word into a HashMap, then walk the
- * second word decrementing counts. Any missing key or leftover count means
- * the letter frequencies don't match.
- *
- * Time: O(n) — one pass to build counts, one pass to consume them.
- * Space: O(1) — at most 26 lowercase letters in the map.
- *
- * Variants: IsAnagramSorted.java (sorts both words and compares — simpler
- * to write, O(n log n) instead of O(n))
- */
 public class IsAnagram implements AnagramChecker {
 
     @Override
@@ -60,3 +63,4 @@ public class IsAnagram implements AnagramChecker {
         return true;
     }
 }
+```
