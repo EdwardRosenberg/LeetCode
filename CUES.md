@@ -15,6 +15,15 @@ Self-test: read each cue, guess the pattern, then click to check. 5–10 minutes
 
 </details>
 
+**Cue:** longest substring achievable by replacing at most k characters
+
+<details>
+<summary>Click to reveal</summary>
+
+[Longest Repeating Character Replacement](src/main/java/slidingwindow/longestrepeatingcharacter/LongestRepeatingCharacter.md) (Medium) (+ [optimized variant](src/main/java/slidingwindow/longestrepeatingcharacter/LongestRepeatingCharacterOptimized.md))
+
+</details>
+
 ---
 
 ## Arrays & Hashing

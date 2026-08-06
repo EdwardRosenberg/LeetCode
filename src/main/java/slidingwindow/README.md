@@ -20,3 +20,4 @@ The window `[left, right]` expands via `right`, shrinks via `left`, and stays va
 | Problem | Difficulty | Cue | Solution | Last Solved |
 |---------|-----------|-----|----------|-------------|
 | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Medium | longest/shortest substring or subarray satisfying a condition | [LongestSubstringSliding.md](longestsubstring/LongestSubstringSliding.md) | 2026-07-11 |
+| [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/) | Medium | longest substring achievable by replacing at most k characters | [LongestRepeatingCharacter.md](longestrepeatingcharacter/LongestRepeatingCharacter.md) (+ [optimized variant](longestrepeatingcharacter/LongestRepeatingCharacterOptimized.md)) | 2026-08-02 |
