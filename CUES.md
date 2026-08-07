@@ -11,7 +11,7 @@ Self-test: read each cue, guess the pattern, then click to check. 5–10 minutes
 <details>
 <summary>Click to reveal</summary>
 
-[Longest Substring Without Repeating Characters](src/main/java/slidingwindow/longestsubstring/LongestSubstringSliding.md) (Medium)
+[Longest Substring Without Repeating Characters](src/main/java/slidingwindow/longestsubstring/LongestSubstringSliding.md) (Medium) (+ [backtrack variant](src/main/java/slidingwindow/longestsubstring/LongestSubstringBacktrack.md))
 
 </details>
 

@@ -2,52 +2,59 @@ package slidingwindow.longestsubstring;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LongestSubstringSlidingTest {
 
-    private final LongestSubstringSliding solution = new LongestSubstringSliding();
+    // Both implementations must agree on every scenario — looping over them
+    // here keeps LongestSubstringSliding (canonical, two-pointer window) and
+    // LongestSubstringBacktrack (rebuild-on-duplicate) in sync without
+    // duplicating the whole test file per variant.
+    private final List<LongestSubstringFinder> implementations =
+            List.of(new LongestSubstringSliding(), new LongestSubstringBacktrack());
 
     @Test
     void exampleOne() {
-        assertEquals(3, solution.lengthOfLongestSubstring("abcabcbb"));
+        assertAllImplementations(3, "abcabcbb");
     }
 
     @Test
     void exampleTwo() {
-        assertEquals(1, solution.lengthOfLongestSubstring("bbbbb"));
+        assertAllImplementations(1, "bbbbb");
     }
 
     @Test
     void exampleThree() {
-        assertEquals(3, solution.lengthOfLongestSubstring("pwwkew"));
+        assertAllImplementations(3, "pwwkew");
     }
 
     @Test
     void emptyInput() {
-        assertEquals(0, solution.lengthOfLongestSubstring(""));
+        assertAllImplementations(0, "");
     }
 
     @Test
     void singleCharacter() {
-        assertEquals(1, solution.lengthOfLongestSubstring(" "));
+        assertAllImplementations(1, " ");
     }
 
     @Test
     void allDuplicates() {
-        assertEquals(1, solution.lengthOfLongestSubstring("aa"));
+        assertAllImplementations(1, "aa");
     }
 
     @Test
     void duplicateNotAtWindowStart() {
         // "dvdf": the repeated 'd' is one step into the window, not at its
         // very start — left has to jump from 0 to 1, not skip the whole window.
-        assertEquals(3, solution.lengthOfLongestSubstring("dvdf"));
+        assertAllImplementations(3, "dvdf");
     }
 
     @Test
     void mixedCharacterTypes() {
-        assertEquals(3, solution.lengthOfLongestSubstring(" _3"));
+        assertAllImplementations(3, " _3");
     }
 
     @Test
@@ -55,6 +62,13 @@ class LongestSubstringSlidingTest {
         // Alphabet twice back-to-back: window grows to the full 26 letters,
         // then the repeat at index 26 caps it there for the rest of the string.
         String alphabetTwice = "abcdefghijklmnopqrstuvwxyz".repeat(2);
-        assertEquals(26, solution.lengthOfLongestSubstring(alphabetTwice));
+        assertAllImplementations(26, alphabetTwice);
+    }
+
+    private void assertAllImplementations(int expected, String input) {
+        for (LongestSubstringFinder implementation : implementations) {
+            assertEquals(expected, implementation.lengthOfLongestSubstring(input),
+                    implementation.getClass().getSimpleName() + " disagreed for input \"" + input + "\"");
+        }
     }
 }

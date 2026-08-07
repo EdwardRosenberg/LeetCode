@@ -4,6 +4,8 @@
 - **Pattern:** Sliding Window
 - **Cue:** "longest/shortest substring or subarray satisfying a condition"
 
+Variants: [LongestSubstringBacktrack](LongestSubstringBacktrack.md) (discards and rebuilds the window by scanning backward on every duplicate instead of sliding a left pointer — same idea, but O(n * window size) worst case)
+
 ## Approach
 
 Expand the right pointer; on a duplicate, shrink from the left until the window is valid again. Window contents are tracked in a `HashSet`.
@@ -55,8 +57,9 @@ package slidingwindow.longestsubstring;
 import java.util.HashSet;
 import java.util.Set;
 
-public class LongestSubstringSliding {
+public class LongestSubstringSliding implements LongestSubstringFinder {
 
+    @Override
     public int lengthOfLongestSubstring(String input) {
         if (input.length() <= 1) return input.length();
 

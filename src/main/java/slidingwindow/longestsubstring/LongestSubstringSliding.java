@@ -15,9 +15,14 @@ import java.util.Set;
  *
  * Time: O(n) — each element enters and leaves the window at most once.
  * Space: O(min(n, alphabet))
+ *
+ * Variants: LongestSubstringBacktrack.java (discards and rebuilds the
+ * window by scanning backward on every duplicate instead of sliding a
+ * left pointer — same idea, but O(n * window size) worst case)
  */
-public class LongestSubstringSliding {
+public class LongestSubstringSliding implements LongestSubstringFinder {
 
+    @Override
     public int lengthOfLongestSubstring(String input) {
         if (input.length() <= 1) return input.length();
 
