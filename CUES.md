@@ -24,6 +24,15 @@ Self-test: read each cue, guess the pattern, then click to check. 5–10 minutes
 
 </details>
 
+**Cue:** does any substring of text contain the exact same character counts as pattern
+
+<details>
+<summary>Click to reveal</summary>
+
+[Permutation in String](src/main/java/slidingwindow/permutationinstring/PermutationInString.md) (Medium) (+ [hash array](src/main/java/slidingwindow/permutationinstring/PermutationInStringHashArray.md), [optimized](src/main/java/slidingwindow/permutationinstring/PermutationInStringOptimized.md) variants)
+
+</details>
+
 ---
 
 ## Arrays & Hashing
