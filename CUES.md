@@ -33,6 +33,15 @@ Self-test: read each cue, guess the pattern, then click to check. 5–10 minutes
 
 </details>
 
+**Cue:** max/min of every fixed-size window as it slides across an array
+
+<details>
+<summary>Click to reveal</summary>
+
+[Sliding Window Maximum](src/main/java/slidingwindow/maxslidingwindow/MaxSlidingWindowDeque.md) (Hard) (+ [TreeMap variant](src/main/java/slidingwindow/maxslidingwindow/MaxSlidingWindowTreeMap.md))
+
+</details>
+
 ---
 
 ## Arrays & Hashing
