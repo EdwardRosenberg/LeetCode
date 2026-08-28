@@ -42,6 +42,15 @@ Self-test: read each cue, guess the pattern, then click to check. 5–10 minutes
 
 </details>
 
+**Cue:** smallest window of text that contains every character of pattern (counts included)
+
+<details>
+<summary>Click to reveal</summary>
+
+[Minimum Window Substring](src/main/java/slidingwindow/minimumwindowsubstring/MinimumWindowSubstring.md) (Hard)
+
+</details>
+
 **Cue:** max/min of every fixed-size window as it slides across an array
 
 <details>
