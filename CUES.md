@@ -6,6 +6,15 @@ Self-test: read each cue, guess the pattern, then click to check. 5–10 minutes
 
 ## Sliding Window
 
+**Cue:** one buy + one sell, maximize profit — track the minimum price seen so far
+
+<details>
+<summary>Click to reveal</summary>
+
+[Best Time to Buy and Sell Stock](src/main/java/slidingwindow/buysellstock/BuySellStock.md) (Easy)
+
+</details>
+
 **Cue:** longest/shortest substring or subarray satisfying a condition
 
 <details>
