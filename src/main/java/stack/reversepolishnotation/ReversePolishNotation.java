@@ -1,9 +1,24 @@
-package stack;
+package stack.reversepolishnotation;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * LeetCode 150 — Evaluate Reverse Polish Notation (Medium)
+ * https://leetcode.com/problems/evaluate-reverse-polish-notation/
+ *
+ * Pattern: Stack
+ * Cue: "evaluate postfix expression — an operator always applies to the two most recently seen operands"
+ *
+ * Approach: Scan tokens left to right. A number gets pushed. An operator
+ * pops the top two operands (the second-popped one came first in the
+ * original expression) and pushes the result back. The final value left on
+ * the stack is the answer.
+ *
+ * Time: O(n) — each token is processed once.
+ * Space: O(n) for the stack.
+ */
 public class ReversePolishNotation {
 
     public int evalRPN(String[] tokens) {
@@ -12,21 +27,21 @@ public class ReversePolishNotation {
 
         for (String token : tokens) {
             if (operators.contains(token)) {
-                int val2 = stack.pop();
-                int val1 = stack.pop();
+                int secondOperand = stack.pop();
+                int firstOperand = stack.pop();
 
                 switch (token) {
                     case "+":
-                        stack.push(val1 + val2);
+                        stack.push(firstOperand + secondOperand);
                         break;
                     case "-":
-                        stack.push(val1 - val2);
+                        stack.push(firstOperand - secondOperand);
                         break;
                     case "*":
-                        stack.push(val1 * val2);
+                        stack.push(firstOperand * secondOperand);
                         break;
                     case "/":
-                        stack.push(val1 / val2);
+                        stack.push(firstOperand / secondOperand);
                         break;
                 }
             } else {
@@ -46,5 +61,4 @@ public class ReversePolishNotation {
         operators.add("/");
         return operators;
     }
-
 }

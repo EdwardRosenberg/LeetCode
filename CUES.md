@@ -171,7 +171,68 @@ Self-test: read each cue, guess the pattern, then click to check. 5–10 minutes
 
 ## Stack
 
-(No problems indexed yet — cues will appear here as they're added.)
+**Cue:** matching brackets — a closer must match the most recently opened bracket
+
+<details>
+<summary>Click to reveal</summary>
+
+[Valid Parentheses](src/main/java/stack/validparentheses/ValidParentheses.md) (Easy)
+
+</details>
+
+**Cue:** stack that also supports O(1) getMin alongside push/pop
+
+<details>
+<summary>Click to reveal</summary>
+
+[Min Stack](src/main/java/stack/minstack/MinStack.md) (Medium)
+
+</details>
+
+**Cue:** evaluate postfix expression — an operator always applies to the two most recently seen operands
+
+<details>
+<summary>Click to reveal</summary>
+
+[Evaluate Reverse Polish Notation](src/main/java/stack/reversepolishnotation/ReversePolishNotation.md) (Medium)
+
+</details>
+
+**Cue:** generate every well-formed combination — backtrack with open/close counts as guardrails
+
+<details>
+<summary>Click to reveal</summary>
+
+[Generate Parentheses](src/main/java/stack/generateparenthesis/GenerateParenthesis.md) (Medium)
+
+</details>
+
+**Cue:** next greater element to the right — how many steps until a bigger value shows up
+
+<details>
+<summary>Click to reveal</summary>
+
+[Daily Temperatures](src/main/java/stack/dailytemperatures/DailyTemperatures.md) (Medium)
+
+</details>
+
+**Cue:** cars merge into a fleet when a slower car ahead blocks faster cars behind
+
+<details>
+<summary>Click to reveal</summary>
+
+[Car Fleet](src/main/java/stack/carfleet/CarFleet.md) (Medium)
+
+</details>
+
+**Cue:** largest rectangle under a histogram — width is limited by the shortest bar in the span
+
+<details>
+<summary>Click to reveal</summary>
+
+[Largest Rectangle in Histogram](src/main/java/stack/largestrectangle/LargestRectangle.md) (Hard)
+
+</details>
 
 ---
 
