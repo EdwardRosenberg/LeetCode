@@ -131,7 +131,41 @@ Self-test: read each cue, guess the pattern, then click to check. 5–10 minutes
 
 ## Two Pointers
 
-(No problems indexed yet — cues will appear here as they're added.)
+**Cue:** ignore non-alphanumeric characters, compare case-insensitively front-to-back
+
+<details>
+<summary>Click to reveal</summary>
+
+[Valid Palindrome](src/main/java/twopointers/validpalindrome/ValidPalindrome.md) (Easy)
+
+</details>
+
+**Cue:** find all triples summing to a target — fix one, two-pointer the rest
+
+<details>
+<summary>Click to reveal</summary>
+
+[3Sum](src/main/java/twopointers/threesum/ThreeSum.md) (Medium)
+
+</details>
+
+**Cue:** maximize area/product between two elements — start wide, narrow inward
+
+<details>
+<summary>Click to reveal</summary>
+
+[Container With Most Water](src/main/java/twopointers/containerwithmostwater/ContainerWithMostWater.md) (Medium)
+
+</details>
+
+**Cue:** water trapped at each position is bounded by the shorter of its tallest left/right walls
+
+<details>
+<summary>Click to reveal</summary>
+
+[Trapping Rain Water](src/main/java/twopointers/trappingrainwater/TrappingRainwater.md) (Hard) (+ [two-pointer variant](src/main/java/twopointers/trappingrainwater/TrappingRainwaterTwoPointers.md))
+
+</details>
 
 ---
 
