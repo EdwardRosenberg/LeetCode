@@ -45,6 +45,27 @@ package slidingwindow.permutationinstring;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * LeetCode 567 — Permutation in String (Medium)
+ * https://leetcode.com/problems/permutation-in-string/
+ *
+ * Pattern: Sliding Window
+ * Cue: "does any substring of text contain the exact same character counts as pattern"
+ *
+ * Approach: Same fixed-size sliding window as the canonical version, but
+ * instead of comparing the two 26-letter count maps on every step, track
+ * a running `matches` counter — how many of the 26 letters currently have
+ * equal counts between pattern and the window. Every single-character
+ * update can only flip ONE letter's agreement status, so `matches` only
+ * ever needs adjusting by at most 1 per update instead of being
+ * recomputed from scratch.
+ *
+ * Time: O(n) — every window shift does O(1) work (two single-letter
+ * updates), instead of an O(alphabet) comparison.
+ * Space: O(alphabet) for the two fixed-size (26-entry) count maps.
+ *
+ * See PermutationInString.java for the canonical version.
+ */
 public class PermutationInStringOptimized implements PermutationChecker {
 
     private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";

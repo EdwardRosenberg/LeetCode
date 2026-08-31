@@ -57,6 +57,23 @@ package slidingwindow.longestsubstring;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * LeetCode 3 — Longest Substring Without Repeating Characters (Medium)
+ * https://leetcode.com/problems/longest-substring-without-repeating-characters/
+ *
+ * Pattern: Sliding Window
+ * Cue: "longest/shortest substring or subarray satisfying a condition"
+ *
+ * Approach: Expand right pointer; on duplicate, shrink from left until valid.
+ * Window contents tracked in a HashSet.
+ *
+ * Time: O(n) — each element enters and leaves the window at most once.
+ * Space: O(min(n, alphabet))
+ *
+ * Variants: LongestSubstringBacktrack.java (discards and rebuilds the
+ * window by scanning backward on every duplicate instead of sliding a
+ * left pointer — same idea, but O(n * window size) worst case)
+ */
 public class LongestSubstringSliding implements LongestSubstringFinder {
 
     @Override

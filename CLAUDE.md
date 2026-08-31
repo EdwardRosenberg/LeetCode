@@ -11,7 +11,7 @@ The usual request is: `add today's solution: <problem name>` plus pasted or comm
 1. Place a cleaned reference solution in the correct pattern package, inside a subpackage named for the problem (see structure below).
 2. Write a JUnit test class covering: the problem's given examples, at least two edge cases (empty/single-element/boundary values), and one larger input.
 3. Write the per-solution `.md` doc page next to the solution, and add its row to that pattern's `README.md` index. If the pattern package is new, add it to the root `README.md` too.
-4. Run `./gradlew test` and confirm green before finishing.
+4. Run `./gradlew test` and confirm green, and run the `.md`-sync check (see Per-solution MD pages) before finishing.
 
 Keep the whole operation tight. This should take minutes, not become a refactoring session.
 
@@ -73,9 +73,30 @@ Every solution gets a `<ProblemName>.md` file next to its `.java` file, in the s
 2. **`Why it works:` (mandatory)** — the correctness argument, distinct from the approach's step-by-step mechanics. The Approach section says *what* the code does; this says *why doing that is guaranteed to produce a correct answer*. Concretely: what invariant does each step preserve, why does the chosen key/signature/check make equal-under-the-problem's-definition inputs collide (or not), why does the early-exit/boundary condition not cut off a valid case. For a suboptimal or trap variant, this is "why it doesn't" instead — where exactly it breaks, with the smallest input that exposes it (e.g. the division approach's `0/0` at a zero's own index). One to three sentences is usually enough; skip padding it out when the mechanism is genuinely self-evident from the Approach line (a plain HashMap membership check rarely needs its own correctness proof), but default to including it — this is the thing most likely to still be fuzzy on a cold re-read months later, more than the mechanics ever are.
 3. **An ASCII diagram walking through the mechanic**, when the pattern involves something spatial that's faster to grok visually than in prose — pointer/window movement, stack pushes/pops, tree/list traversal, etc. Trace a short concrete example (not the whole input), show the key transition (e.g. the collision that triggers a shrink), and reuse the code's own variable names in the diagram so the two reinforce each other. Skip it for patterns where a diagram wouldn't add anything over the prose approach (e.g. a plain hash lookup).
 4. **`Watch out:` section (optional)** — a one-line note on the failure mode from your timed attempt: "forgot to shrink before adding" or "off-by-one on the window boundary." This is the most valuable months later, because it's *your* blind spot, not generic knowledge. Only include if there's an actual gotcha; skip it for the straightforward cases. Distinct from `Why it works` — this is an implementation trap, not a correctness argument.
-5. The full solution code embedded below it in a fenced ```java block, kept in sync with the `.java` file.
+5. The full solution code embedded below it in a fenced ```java block.
 
 This makes the solution readable on GitHub without opening the IDE, and is the link target from the pattern index.
+
+**The embedded code block is a verbatim copy of the `.java` file — byte for byte, including the `package` line, imports, the javadoc header, and every inline comment.** Do not strip the header to avoid repeating the prose above it, and do not hand-retype or lightly edit the block. Copy the file.
+
+This is a hard rule for one reason: verbatim is the only version that can be *checked*. A stripped or paraphrased block drifts silently as the `.java` evolves, and the `.md` is the primary read surface — a stale block teaches the wrong code to the one person who will never notice, because they're reading it on GitHub instead of the IDE. This has already happened: three pages sat for weeks showing a pre-interface class signature and a superseded `get`/`put` where the source had moved to `merge`.
+
+After editing any solution `.java`, re-sync its block and verify every page with:
+
+```bash
+python3 - <<'PY'
+import re,glob,os
+for md in glob.glob('src/main/java/**/*.md', recursive=True):
+    if os.path.basename(md).lower().startswith('readme'): continue
+    java = md[:-3]+'.java'
+    if not os.path.isfile(java): continue
+    m = re.search(r'```java\n(.*?)^```', open(md).read(), re.S|re.M)
+    if not m or m.group(1).rstrip('\n') != open(java).read().rstrip('\n'):
+        print('OUT OF SYNC:', md)
+PY
+```
+
+Silence means all pages match. Run it before declaring a curation task done.
 
 ## Test conventions
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LongestSubstringSlidingTest {
+class LongestSubstringTest {
 
     // Both implementations must agree on every scenario — looping over them
     // here keeps LongestSubstringSliding (canonical, two-pointer window) and
