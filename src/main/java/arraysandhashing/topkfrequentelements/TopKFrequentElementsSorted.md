@@ -29,6 +29,24 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * LeetCode 347 — Top K Frequent Elements (Medium)
+ * https://leetcode.com/problems/top-k-frequent-elements/
+ *
+ * Pattern: Arrays & Hashing
+ * Cue: "k most/least frequent elements"
+ *
+ * Approach: Count occurrences into a HashMap, then sort entries by frequency
+ * descending and take the first k keys.
+ *
+ * Time: O(n log n) — dominated by sorting all distinct entries by frequency.
+ * Space: O(n) for the frequency map.
+ *
+ * Variants: TopKFrequentElementsBucket.java (buckets numbers by frequency
+ * instead of comparator-sorting entries — same O(n log n) overall as
+ * implemented here, since it sorts the array first to find frequencies;
+ * the bucket-walk step itself is O(n), but the sort dominates)
+ */
 public class TopKFrequentElementsSorted implements TopKFrequentCalculator {
 
     @Override

@@ -22,6 +22,21 @@ package arraysandhashing.validanagram;
 
 import java.util.Arrays;
 
+/**
+ * LeetCode 242 — Valid Anagram (Easy)
+ * https://leetcode.com/problems/valid-anagram/
+ *
+ * Pattern: Arrays & Hashing
+ * Cue: "two strings/values use the exact same characters/elements the same number of times"
+ *
+ * Approach: Sort both words' characters and compare the sorted arrays —
+ * anagrams sort to the exact same sequence.
+ *
+ * Time: O(n log n) — dominated by sorting both character arrays.
+ * Space: O(n) for the two sorted-character copies.
+ *
+ * See IsAnagram.java for the canonical O(n) HashMap-counting version.
+ */
 public class IsAnagramSorted implements AnagramChecker {
 
     @Override

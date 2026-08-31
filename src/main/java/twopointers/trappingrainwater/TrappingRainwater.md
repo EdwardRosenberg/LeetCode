@@ -44,6 +44,24 @@ total = 1+1+2+1+1 = 6
 ```java
 package twopointers.trappingrainwater;
 
+/**
+ * LeetCode 42 — Trapping Rain Water (Hard)
+ * https://leetcode.com/problems/trapping-rain-water/
+ *
+ * Pattern: Two Pointers
+ * Cue: "water trapped at each position is bounded by the shorter of its tallest left/right walls"
+ *
+ * Approach: Precompute, for every index, the tallest wall strictly to its
+ * left and strictly to its right. The water trapped at that index is
+ * min(leftMax, rightMax) - height[index] (never negative). Sum across all
+ * indices.
+ *
+ * Time: O(n) — three linear passes (left-max, right-max, sum).
+ * Space: O(n) for the two auxiliary arrays.
+ *
+ * Variants: TrappingRainwaterTwoPointers.java (same idea, O(1) space via
+ * two inward-moving pointers instead of precomputed arrays)
+ */
 public class TrappingRainwater implements RainTrapper {
 
     @Override

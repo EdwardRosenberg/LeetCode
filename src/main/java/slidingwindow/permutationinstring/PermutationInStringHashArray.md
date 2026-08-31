@@ -43,6 +43,27 @@ result: true
 ```java
 package slidingwindow.permutationinstring;
 
+/**
+ * LeetCode 567 — Permutation in String (Medium)
+ * https://leetcode.com/problems/permutation-in-string/
+ *
+ * Pattern: Sliding Window
+ * Cue: "does any substring of text contain the exact same character counts as pattern"
+ *
+ * Approach: A single int[26] array tracks the *net* difference between
+ * pattern's letter counts and the current window's — pattern's letters
+ * count as +1 each, the window's letters count as -1 each. The window
+ * matches exactly when every slot in the array nets out to 0.
+ *
+ * Time: O(n * alphabet) — checking "is everything balanced" costs
+ * O(alphabet), and that check runs once per window position. Same
+ * complexity class as the canonical two-map version, just a leaner
+ * (unboxed, fixed-size) data structure.
+ * Space: O(alphabet) for the array.
+ *
+ * See PermutationInString.java for the canonical version, and
+ * PermutationInStringOptimized.java for a genuinely O(n) version.
+ */
 public class PermutationInStringHashArray implements PermutationChecker {
 
     @Override
@@ -68,6 +89,8 @@ public class PermutationInStringHashArray implements PermutationChecker {
         return isBalanced(netCharCounts);
     }
 
+    // Consumes the first window's worth of text characters, decrementing
+    // their counts, and returns the resulting right-pointer position.
     private int consumeInitialWindow(String pattern, String text, int[] netCharCounts) {
         int right = 0;
 
@@ -80,6 +103,7 @@ public class PermutationInStringHashArray implements PermutationChecker {
         return right;
     }
 
+    // a=0, z=25
     private int charIndex(char c) {
         return c - 'a';
     }

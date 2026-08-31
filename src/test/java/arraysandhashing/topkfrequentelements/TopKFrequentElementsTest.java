@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TopKFrequentElementsSortedTest {
+class TopKFrequentElementsTest {
 
     // Both implementations must agree on every scenario — looping over them
     // here keeps TopKFrequentElementsSorted (canonical, comparator sort) and

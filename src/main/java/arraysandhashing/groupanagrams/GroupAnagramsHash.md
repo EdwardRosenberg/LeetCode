@@ -71,8 +71,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GroupAnagramsHash {
+/**
+ * LeetCode 49 — Group Anagrams (Medium)
+ * https://leetcode.com/problems/group-anagrams/
+ *
+ * Pattern: Arrays & Hashing
+ * Cue: "group strings/values by some canonical signature"
+ *
+ * Approach: Build a 26-length letter-count array per word as its anagram
+ * signature — two anagrams always produce identical counts. Bucket words by
+ * that signature in a HashMap.
+ *
+ * Time: O(n * k) — n words, k = max word length; counting letters is O(k)
+ * per word.
+ * Space: O(n * k) for the signature-to-group map.
+ *
+ * Variants: GroupAnagrams.java (sorts each word as its signature instead of
+ * counting letters — simpler to write, O(k log k) per word)
+ */
+public class GroupAnagramsHash implements GroupAnagramsChecker {
 
+    @Override
     public List<List<String>> groupAnagrams(String[] words) {
         List<List<String>> groupedAnagrams = new ArrayList<>();
         if (words.length == 0) return groupedAnagrams;

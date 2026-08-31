@@ -38,6 +38,25 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+/**
+ * LeetCode 36 — Valid Sudoku (Medium)
+ * https://leetcode.com/problems/valid-sudoku/
+ *
+ * Pattern: Arrays & Hashing
+ * Cue: "no duplicates within each row/column/sub-group of a grid"
+ *
+ * Approach: Track digits seen so far per row, per column, and per 3x3 box in
+ * three separate maps keyed by row index, column index, and box coordinate.
+ * A cell is invalid if its digit is already recorded in any of the three.
+ *
+ * Time: O(1) — the board is always 9x9, so this is 81 constant-bounded
+ * lookups regardless of input size.
+ * Space: O(1) for the same reason — at most 9 rows, 9 cols, 9 boxes tracked.
+ *
+ * Variants: ValidSudokuSingleHashset.java (encodes row/col/box membership
+ * into single string keys in one HashSet instead of three maps — fewer
+ * lines, same idea, less immediately obvious what's being tracked)
+ */
 public class ValidSudoku implements SudokuValidator {
 
     @Override
